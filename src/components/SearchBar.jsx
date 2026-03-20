@@ -1,11 +1,18 @@
 const SearchBar = ({ search, setSearch }) => {
   return (
-    <input
-      type="text"
-      placeholder="Search by name or email"
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-    />
+    <div className="search-shell">
+      <label className="search-label" htmlFor="user-search">
+        Search users
+      </label>
+      <input
+        id="user-search"
+        className="search-input"
+        type="text"
+        placeholder="Search by name or email"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+    </div>
   );
 };
 

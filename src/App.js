@@ -54,27 +54,50 @@ const App = () => {
 
   return (
     <div className="container">
-      <h2>User Directory</h2>
+      <header className="hero">
+        <div>
+          <p className="eyebrow">React User Directory</p>
+          <h1>User Directory</h1>
+          <p className="hero-copy">
+            Browse team members, filter by role or status, and add new users in one
+            place.
+          </p>
+        </div>
+        <div className="hero-stat">
+          <span className="hero-stat-value">{filteredUsers.length}</span>
+          <span className="hero-stat-label">Users shown</span>
+        </div>
+      </header>
 
-      <SearchBar search={search} setSearch={setSearch} />
+      <section className="toolbar">
+        <SearchBar search={search} setSearch={setSearch} />
 
-      <FilterPanel
-        roleFilter={roleFilter}
-        setRoleFilter={setRoleFilter}
-        statusFilter={statusFilter}
-        setStatusFilter={setStatusFilter}
-      />
+        <FilterPanel
+          roleFilter={roleFilter}
+          setRoleFilter={setRoleFilter}
+          statusFilter={statusFilter}
+          setStatusFilter={setStatusFilter}
+        />
+      </section>
 
       <div className="main">
-        <UserList
-          users={filteredUsers}
-          onSelect={setSelectedUser}
-          selectedUserId={selectedUser?.id}
-        />
+        <section className="panel list-panel">
+          <div className="panel-header">
+            <h2>Users</h2>
+            <span>{users.length} total</span>
+          </div>
+          <UserList
+            users={filteredUsers}
+            onSelect={setSelectedUser}
+            selectedUserId={selectedUser?.id}
+          />
+        </section>
         <UserDetails user={selectedUser} />
       </div>
 
-      <AddUserForm onAdd={addUser} />
+      <section className="panel form-panel">
+        <AddUserForm onAdd={addUser} />
+      </section>
     </div>
   );
 };
