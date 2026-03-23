@@ -14,10 +14,10 @@ Language: ${user.language}
 `.trim();
 
 export const generateUserInsights = async (user) => {
-  const apiKey = process.env.REACT_APP_GROQ_API_KEY;
+  const apiKey = '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';
 
   if (!apiKey) {
-    throw new Error("Missing Groq API key. Add REACT_APP_GROQ_API_KEY to your .env file.");
+    throw new Error("Missing Groq API key.");
   }
 
   const response = await fetch(GROQ_API_URL, {
