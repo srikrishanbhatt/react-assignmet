@@ -14,7 +14,7 @@ Language: ${user.language}
 `.trim();
 
 export const generateUserInsights = async (user) => {
-  const apiKey = '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';
+  const apiKey = '';
 
   if (!apiKey) {
     throw new Error("Missing Groq API key.");
