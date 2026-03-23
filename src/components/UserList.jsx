@@ -1,6 +1,12 @@
 import UserCard from "./UserCard";
 
-const UserList = ({ users, onSelect, selectedUserId }) => {
+const UserList = ({
+  users,
+  onSelect,
+  selectedUserId,
+  insightsByUserId,
+  onGenerateInsights,
+}) => {
   if (users.length === 0) {
     return <div className="empty-state">No users found.</div>;
   }
@@ -13,6 +19,8 @@ const UserList = ({ users, onSelect, selectedUserId }) => {
           user={user}
           onSelect={onSelect}
           isSelected={user.id === selectedUserId}
+          insightState={insightsByUserId[user.id]}
+          onGenerateInsights={onGenerateInsights}
         />
       ))}
     </div>

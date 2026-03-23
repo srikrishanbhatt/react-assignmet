@@ -68,3 +68,72 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# React Assignment - Smart User Insights Panel
+
+This project is a React user directory app with an AI-powered insights feature.
+
+Users can:
+- view a list of users
+- search and filter users
+- select a user to see details
+- add a new user
+- generate AI-based insights for each user using Groq
+
+## Setup
+
+Create a `.env` file in the project root and add your Groq API key:
+
+```env
+REACT_APP_GROQ_API_KEY=your_groq_api_key_here
+```
+
+After adding the key, restart the app.
+
+## Run The Project
+
+In the project directory, you can run:
+
+```bash
+npm start
+```
+
+This starts the app in development mode at `http://localhost:3000`.
+
+## AI Feature
+
+Each user card has a `Generate Insights` button.
+
+When clicked:
+- the app sends the user data to Groq
+- Groq returns a short summary in 1-2 sentences
+- the result is shown below the user card
+- the result is cached so the same user is not requested again unless regenerated
+
+The app also shows:
+- loading state while the insight is being created
+- error message if the API call fails
+
+## Short Explanation
+
+### How I designed the prompt
+
+I made the prompt simple and clear. I gave the AI the user's name, role, status, and language, and asked it to write a short summary in 1 to 2 sentences. I also told it to use only the given data and not make up extra information. If it guesses something, it should use soft words like "likely" or "may."
+
+### How I handled API calls and errors
+
+I used `async/await` to call the Groq API. When the user clicks the button, the app checks if the insight is already saved. If yes, it does not call the API again. While the API is working, the app shows a loading message. If the call is successful, the summary is shown on the screen and saved in state and `localStorage`. If something goes wrong, the app catches the error and shows an error message instead of crashing.
+
+### What improvements I would add
+
+If I had more time, I would improve the feature by adding retry support when the API fails and giving the user a better regenerate option. I would also allow small prompt customization so the summary can be more detailed or more simple based on need. To keep the setup cleaner, I would manage the API key through the `.env` file properly and make sure it is easy to configure for different environments. I would also add tests and, if needed, TypeScript to make the code more reliable and easier to maintain.
+
+## Tech Used
+
+- React
+- React Hooks
+- Fetch API
+- Groq API
+- localStorage
+

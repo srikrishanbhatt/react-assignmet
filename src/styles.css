@@ -172,9 +172,12 @@
 .user-list {
   display: grid;
   gap: 14px;
+  min-width: 0;
 }
 
 .card {
+  width: 100%;
+  box-sizing: border-box;
   border: 1px solid var(--border);
   padding: 16px;
   border-radius: 18px;
@@ -182,9 +185,7 @@
 }
 
 .user-card {
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
+  min-width: 0;
   transition:
     transform 140ms ease,
     border-color 140ms ease,
@@ -195,6 +196,18 @@
   transform: translateY(-2px);
   border-color: var(--border-strong);
   box-shadow: 0 14px 30px rgba(18, 32, 51, 0.08);
+}
+
+.user-card-select {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .user-card.selected {
@@ -211,6 +224,69 @@
 .user-card p {
   margin: 6px 0;
   color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.insight-panel {
+  min-width: 0;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.insight-button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1d4ed8, #122033);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+}
+
+.insight-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(29, 78, 216, 0.22);
+}
+
+.insight-button:disabled {
+  opacity: 0.72;
+  cursor: wait;
+}
+
+.insight-status,
+.insight-error,
+.insight-result p {
+  margin: 10px 0 0;
+}
+
+.insight-status {
+  color: var(--muted);
+}
+
+.insight-error {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #fff1f2;
+  color: #b42318;
+}
+
+.insight-result {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  overflow-wrap: anywhere;
+}
+
+.insight-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 .details {
